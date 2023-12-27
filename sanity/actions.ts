@@ -12,6 +12,14 @@ export const getResources = async (params: GetResourcesParams) => {
 	const { query, category, page } = params;
 
 	try {
+		const sanityQuery = buildQuery({
+			type: "resource",
+			query,
+			category,
+			page: parseInt(page),
+		});
+		// console.log("Sanity Query:", sanityQuery);
+
 		const resources = await readClient.fetch(
 			groq`${buildQuery({
 				type: "resource",
@@ -19,16 +27,16 @@ export const getResources = async (params: GetResourcesParams) => {
 				category,
 				page: parseInt(page),
 			})}{
-          title,
-          _id,
-          downloadLink,
-          "image": poster.asset->url,
-          views,
-          slug,
-          category
-        }`
+        title,
+        _id,
+        downloadLink,
+        "image": poster.asset->url,
+        views,
+        slug,
+        category
+      }`
 		);
-
+		// console.log({ resources });
 		return resources;
 	} catch (error) {
 		console.log(error);

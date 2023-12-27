@@ -1,6 +1,6 @@
-import resourcePlaylist from "./resource-playlist.schema";
 import resource from "./resources.schema";
+import resourcePlaylist from "./resource-playlist.schema";
 
-const schema = [resource, resourcePlaylist];
+const schemas = [resource, resourcePlaylist];
 
-export default schema;
+export default schemas;
