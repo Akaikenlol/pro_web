@@ -4,6 +4,8 @@ import SearchForm from "@/components/SearchForm";
 import { getResources } from "@/sanity/actions";
 import React from "react";
 
+export const revalidate = 900;
+
 const Page = async () => {
 	const resources = await getResources({
 		category: "",
@@ -11,7 +13,7 @@ const Page = async () => {
 		query: "",
 	});
 
-	console.log(resources);
+	// console.log(resources);
 	return (
 		<main className="flex-center paddings mx-auto w-full max-w-screen-2xl flex-col">
 			<section className="nav-padding w-full">
@@ -32,7 +34,6 @@ const Page = async () => {
 							id={resource._id}
 							image={resource.image}
 							downloadNumber={resource.views}
-							slug={resource._id}
 						/>
 					))
 				) : (
