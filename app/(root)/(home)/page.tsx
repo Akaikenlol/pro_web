@@ -4,6 +4,7 @@ import ResourceCard from "@/components/ResourceCard";
 import SearchForm from "@/components/SearchForm";
 import { getResources, getResourcesPlaylist } from "@/sanity/actions";
 import React from "react";
+import Loading from "./loading";
 
 export const revalidate = 900;
 
@@ -20,9 +21,12 @@ const Page = async ({ searchParams }: Props) => {
 
 	const resourcesPlaylist = await getResourcesPlaylist();
 
-	console.log(resourcesPlaylist);
-
+	// console.log(resourcesPlaylist);
 	// console.log(resources);
+
+	// const isLoading = true;
+	// if (isLoading) return <Loading />;
+
 	return (
 		<main className="flex-center paddings mx-auto w-full max-w-screen-2xl flex-col">
 			<section className="nav-padding w-full">
